@@ -22,7 +22,7 @@ spec:
         app: api-demo-service-v3
     spec:
       containers:
-      - image: gcr.io/kefeng-playground-369510/api-demo:node-v3
+      - image: australia-southeast1-docker.pkg.dev/kefeng-gke-lab/gke-app/api-demo:node-v1
         imagePullPolicy: Always
         name: api-demo-v3
         ports:

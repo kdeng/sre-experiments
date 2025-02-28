@@ -22,7 +22,7 @@ spec:
         app: api-demo-service-v1
     spec:
       containers:
-      - image: gcr.io/kefeng-playground-369510/api-demo:node-v1
+      - image: australia-southeast1-docker.pkg.dev/kefeng-gke-lab/gke-app/api-demo:node-v1
         imagePullPolicy: Always
         name: api-demo-v1
         ports:
@@ -35,30 +35,30 @@ spec:
           requests:
             cpu: 100m
             memory: 64Mi
-        # startupProbe:
-        #   httpGet:
-        #     path: /healthz/startupProbe
-        #     port: 8080
-        #   initialDelaySeconds: 2
-        #   successThreshold: 1
-        #   failureThreshold: 30
-        #   periodSeconds: 10
-        # livenessProbe:
-        #   httpGet:
-        #     path: /healthz/livenessProbe
-        #     port: 8080
-        #   initialDelaySeconds: 2
-        #   successThreshold: 1
-        #   failureThreshold: 1
-        #   periodSeconds: 10
-        # readinessProbe:
-        #   httpGet:
-        #     path: /healthz/readinessProbe
-        #     port: 8080
-        #   successThreshold: 1
-        #   failureThreshold: 5
-        #   periodSeconds: 5
-        #   timeoutSeconds: 5
+        startupProbe:
+          httpGet:
+            path: /healthz/startupProbe
+            port: 8080
+          initialDelaySeconds: 2
+          successThreshold: 1
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /healthz/livenessProbe
+            port: 8080
+          initialDelaySeconds: 2
+          successThreshold: 1
+          failureThreshold: 1
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /healthz/readinessProbe
+            port: 8080
+          successThreshold: 1
+          failureThreshold: 5
+          periodSeconds: 5
+          timeoutSeconds: 5
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       restartPolicy: Always
